@@ -1,7 +1,7 @@
 <!-- Copyright (c) 2019-2020 十三 all rights reserved. -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="mall/header::head-fragment('NewBee商城-订单详情','order-detail')">
+<head th:replace="mall/header::head-fragment('WaLI商城-订单详情','order-detail')">
 </head>
 <link rel="stylesheet" th:href="@{/admin/plugins/sweetalert/sweetalert.css}"/>
 <body>
@@ -14,7 +14,7 @@
     <div class="self-info center">
 
         <!-- sidebar -->
-        <div th:replace="mall/personal-sidebar::sidebar-fragment"></div>
+<!--        <div th:replace="mall/personal-sidebar::sidebar-fragment"></div>-->
 
         <div class="intro fr">
             <div class="uc-box uc-main-box">
@@ -56,10 +56,10 @@
                                     </div>
                                     <div class="order-desc">
                                         <th:block th:if="${orderDetailVO.orderStatus==0}">请尽快完成支付哦~</th:block>
-                                        <th:block th:if="${orderDetailVO.orderStatus==1}">newbee商城订单确认中~</th:block>
-                                        <th:block th:if="${orderDetailVO.orderStatus==2}">newbee仓库正在紧急配货中~</th:block>
+                                        <th:block th:if="${orderDetailVO.orderStatus==1}">WaLi商城订单确认中~</th:block>
+                                        <th:block th:if="${orderDetailVO.orderStatus==2}">Wali仓库正在紧急配货中~</th:block>
                                         <th:block th:if="${orderDetailVO.orderStatus==3}">订单已出库正在快马加鞭向您奔来~</th:block>
-                                        <th:block th:if="${orderDetailVO.orderStatus==4}">交易成功，感谢您对newbee商城的支持~
+                                        <th:block th:if="${orderDetailVO.orderStatus==4}">交易成功，感谢您对WaLi商城的支持~
                                         </th:block>
                                         <th:block th:if="${orderDetailVO.orderStatus<0}">交易已关闭~</th:block>
 
@@ -124,7 +124,9 @@
                                                 <th:block th:if="${orderDetailVO.orderStatus>4}">
                                                     <li class="step step-last">
                                                 </th:block>
-                                                <div class="progress"><span class="text">交易成功</span></div>
+                                                <div class="progress"><span class="text">交易成功</span>
+
+                                                </div>
                                                 <div class="info"></div>
                                                 </li>
                                             </ol>
@@ -146,17 +148,31 @@
                                             <td class="col col-name">
                                                 <p class="name">
                                                     <a target="_blank" th:href="@{'/goods/detail/'+${item.goodsId}}"
-                                                       th:text="${item.goodsName}">newbee</a>
+                                                       th:text="${item.goodsName}">wali</a>
                                                 </p>
+
+
+
                                             </td>
                                             <td class="col col-price"><p class="price"
                                                                          th:text="${item.sellingPrice+'元 x '+item.goodsCount}">
                                                 1299元 × 1</p></td>
                                             <td class="col col-actions">
                                             </td>
+<!--                                            <th:block th:if="${orderDetailVO.orderStatus>=4}">-->
+<!--                                                <td>-->
+<!--                                                    <a type="button"  class="btn btn-primary" th:href="@{'/goods/detail/'+${item.goodsId}}">前往评价</a>-->
+
+<!--                                                </td>-->
+                                            </th:block>
+
+
                                         </tr>
                                     </th:block>
+
+
                                     </tbody>
+
                                 </table>
                             </div>
                             <div id="editAddr" class="order-detail-info">

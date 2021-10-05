@@ -50,10 +50,12 @@ public class NewBeeMallCarouselController {
     @RequestMapping(value = "/carousels/list", method = RequestMethod.GET)
     @ResponseBody
     public Result list(@RequestParam Map<String, Object> params) {
+        System.out.println(params.toString());
         if (StringUtils.isEmpty(params.get("page")) || StringUtils.isEmpty(params.get("limit"))) {
             return ResultGenerator.genFailResult("参数异常！");
         }
         PageQueryUtil pageUtil = new PageQueryUtil(params);
+
         return ResultGenerator.genSuccessResult(newBeeMallCarouselService.getCarouselPage(pageUtil));
     }
 

@@ -1,4 +1,3 @@
-<!-- Copyright (c) 2019-2020 十三 all rights reserved. -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -52,9 +51,12 @@
                         <div class="sub_content fl" th:text="${item.sellingPrice+'元'}">1299元</div>
                         <div class="sub_content fl">
                             <input class="goods_count" th:id="${'goodsCount'+item.cartItemId}" type="number"
-                                   th:onblur="'updateItem('+${item.cartItemId}+')'"
-                                   th:value="${item.goodsCount}" step="1" min="1"
-                                   max="5">
+                                   th:value="${item.goodsCount}"
+                                   th:onclick="'updateItem('+${item.cartItemId}+')'"
+                                   step="1" min="1"
+                                   max="10"/>
+<!--                                  -->
+
                         </div>
                         <div class="sub_content fl" th:text="${item.goodsCount*item.sellingPrice+'元'}">1299元</div>
                         <div class="sub_content fl"><a href="##" th:onclick="'deleteItem('+${item.cartItemId}+')'">×</a>
@@ -123,8 +125,9 @@
     function updateItem(id) {
         var domId = 'goodsCount' + id;
         var goodsCount = $("#" + domId).val();
-        if (goodsCount > 5) {
-            swal("单个商品最多可购买5个", {
+        // alert(goodsCount);
+        if (goodsCount > 10) {
+            swal("单个商品最多可购买10个", {
                 icon: "error",
             });
             return;

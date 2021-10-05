@@ -8,7 +8,7 @@ $(function () {
         colModel: [
             {label: 'id', name: 'categoryId', index: 'categoryId', width: 50, key: true, hidden: true},
             {label: '分类名称', name: 'categoryName', index: 'categoryName', width: 240},
-            {label: '排序值', name: 'categoryRank', index: 'categoryRank', width: 120},
+            {label: '排序值', name: 'categoryRank', index: 'categoryRank', width: 120,sorttype: "integer", sortable: true},
             {label: '添加时间', name: 'createTime', index: 'createTime', width: 120}
         ],
         height: 560,
@@ -32,6 +32,9 @@ $(function () {
             rows: "limit",
             order: "order",
         },
+        loadonce: true, //一次加载全部数据到客户端，由客户端进行排序。
+        sortname: '排序值',//设置默认的排序列
+        sortorder: 'asc',
         gridComplete: function () {
             //隐藏grid底部滚动条
             $("#jqGrid").closest(".ui-jqgrid-bdiv").css({"overflow-x": "hidden"});

@@ -1,12 +1,12 @@
 $(function () {
-    $("#jqGrid").jqGrid({
+    jQuery("#jqGrid").jqGrid({
         url: '/admin/orders/list',
         datatype: "json",
         colModel: [
             {label: 'id', name: 'orderId', index: 'orderId', width: 50, key: true, hidden: true},
-            {label: '订单号', name: 'orderNo', index: 'orderNo', width: 120},
-            {label: '订单总价', name: 'totalPrice', index: 'totalPrice', width: 60},
-            {label: '订单状态', name: 'orderStatus', index: 'orderStatus', width: 80, formatter: orderStatusFormatter},
+            {label: '订单号', name: 'orderNo', index: 'orderNo', width: 120,editable:true},
+            {label: '订单总价', name: 'totalPrice', index: 'totalPrice', width: 60,editable:true},
+            {label: '订单状态', name: 'orderStatus', index: 'orderStatus', srottype: "int", width: 80,editable:true,sortable: true, formatter: orderStatusFormatter},
             {label: '支付方式', name: 'payType', index: 'payType', width: 80,formatter:payTypeFormatter},
             {label: '收件人地址', name: 'userAddress', index: 'userAddress', width: 10, hidden: true},
             {label: '创建时间', name: 'createTime', index: 'createTime', width: 120},
@@ -22,6 +22,8 @@ $(function () {
         autowidth: true,
         multiselect: true,
         pager: "#jqGridPager",
+        sortname:"订单状态",
+        loadonce:true,
         jsonReader: {
             root: "data.list",
             page: "data.currPage",
@@ -33,6 +35,9 @@ $(function () {
             rows: "limit",
             order: "order",
         },
+
+
+
         gridComplete: function () {
             //隐藏grid底部滚动条
             $("#jqGrid").closest(".ui-jqgrid-bdiv").css({"overflow-x": "hidden"});
@@ -51,7 +56,7 @@ $(function () {
 
     function orderStatusFormatter(cellvalue) {
         //订单状态:0.待支付 1.已支付 2.配货完成 3:出库成功 4.交易成功 -1.手动关闭 -2.超时关闭 -3.商家关闭
-        if (cellvalue == 0) {
+        if (cellvalue === 0) {
             return "待支付";
         }
         if (cellvalue == 1) {
@@ -95,6 +100,7 @@ $(function () {
     });
 
 });
+
 
 /**
  * jqGrid重新加载

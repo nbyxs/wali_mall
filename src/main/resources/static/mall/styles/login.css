@@ -21,7 +21,8 @@ body {
 .form {
     width: 1130px;
     height: 588px;
-    background: url("../image/login_bg.png") no-repeat center center;
+    background: url("../../image/login_bg.png") no-repeat center center;
+    /*background: url(../image/login-logo-2.png) no-repeat;*/
 }
 
 .form .login {

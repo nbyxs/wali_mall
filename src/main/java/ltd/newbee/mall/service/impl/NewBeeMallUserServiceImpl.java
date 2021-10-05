@@ -44,8 +44,8 @@ public class NewBeeMallUserServiceImpl implements NewBeeMallUserService {
         MallUser registerUser = new MallUser();
         registerUser.setLoginName(loginName);
         registerUser.setNickName(loginName);
-        String passwordMD5 = MD5Util.MD5Encode(password, "UTF-8");
-        registerUser.setPasswordMd5(passwordMD5);
+        //String passwordMD5 = MD5Util.MD5Encode(password, "UTF-8");
+        registerUser.setPasswordMd5(password);
         if (mallUserMapper.insertSelective(registerUser) > 0) {
             return ServiceResultEnum.SUCCESS.getResult();
         }
@@ -55,6 +55,7 @@ public class NewBeeMallUserServiceImpl implements NewBeeMallUserService {
     @Override
     public String login(String loginName, String passwordMD5, HttpSession httpSession) {
         MallUser user = mallUserMapper.selectByLoginNameAndPasswd(loginName, passwordMD5);
+        System.out.println(user.toString());
         if (user != null && httpSession != null) {
             if (user.getLockedFlag() == 1) {
                 return ServiceResultEnum.LOGIN_USER_LOCKED.getResult();

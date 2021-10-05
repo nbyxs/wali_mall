@@ -65,10 +65,17 @@ public class AdminController {
         }
         String kaptchaCode = session.getAttribute("verifyCode") + "";
         if (StringUtils.isEmpty(kaptchaCode) || !verifyCode.equals(kaptchaCode)) {
+            System.out.println(verifyCode+"  "+kaptchaCode);
+            System.out.println("====================");
             session.setAttribute("errorMsg", "验证码错误");
             return "admin/login";
         }
-        AdminUser adminUser = adminUserService.login(userName, password);
+        AdminUser adminUser =null;
+
+        adminUser=adminUserService.login(userName, password);
+        System.out.println(userName+"  "+password);
+
+        if(adminUser!=null) System.out.println(adminUser.toString());
         if (adminUser != null) {
             session.setAttribute("loginUser", adminUser.getNickName());
             session.setAttribute("loginUserId", adminUser.getAdminUserId());
@@ -79,6 +86,7 @@ public class AdminController {
             session.setAttribute("errorMsg", "登录失败");
             return "admin/login";
         }
+
     }
 
     @GetMapping("/profile")

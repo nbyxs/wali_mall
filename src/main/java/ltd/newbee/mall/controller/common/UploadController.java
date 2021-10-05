@@ -31,12 +31,7 @@ import java.net.URISyntaxException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-/**
- * @author 13
- * @qq交流群 796794009
- * @email 2449207463@qq.com
- * @link https://github.com/newbee-ltd
- */
+
 @Controller
 @RequestMapping("/admin")
 public class UploadController {
@@ -44,7 +39,8 @@ public class UploadController {
     @Autowired
     private StandardServletMultipartResolver standardServletMultipartResolver;
 
-    @PostMapping({"/upload/file"})
+    @PostMapping({"/static/goods-img/file","/admin/upload/file"})
+
     @ResponseBody
     public Result upload(HttpServletRequest httpServletRequest, @RequestParam("file") MultipartFile file) throws URISyntaxException {
         String fileName = file.getOriginalFilename();
@@ -66,7 +62,7 @@ public class UploadController {
             }
             file.transferTo(destFile);
             Result resultSuccess = ResultGenerator.genSuccessResult();
-            resultSuccess.setData(NewBeeMallUtils.getHost(new URI(httpServletRequest.getRequestURL() + "")) + "/upload/" + newFileName);
+            resultSuccess.setData(NewBeeMallUtils.getHost(new URI(httpServletRequest.getRequestURL() + "")) + "/static/goods-img/" + newFileName);
             return resultSuccess;
         } catch (IOException e) {
             e.printStackTrace();
@@ -74,7 +70,7 @@ public class UploadController {
         }
     }
 
-    @PostMapping({"/upload/files"})
+    @PostMapping({"/static/goods-img/files"})
     @ResponseBody
     public Result uploadV2(HttpServletRequest httpServletRequest) throws URISyntaxException {
         List<MultipartFile> multipartFiles = new ArrayList<>(8);
@@ -117,7 +113,7 @@ public class UploadController {
                     }
                 }
                 multipartFiles.get(i).transferTo(destFile);
-                fileNames.add(NewBeeMallUtils.getHost(new URI(httpServletRequest.getRequestURL() + "")) + "/upload/" + newFileName);
+                fileNames.add(NewBeeMallUtils.getHost(new URI(httpServletRequest.getRequestURL() + "")) + "/static/goods-img/" + newFileName);
             } catch (IOException e) {
                 e.printStackTrace();
                 return ResultGenerator.genFailResult("文件上传失败");

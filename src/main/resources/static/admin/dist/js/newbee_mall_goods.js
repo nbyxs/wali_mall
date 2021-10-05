@@ -7,8 +7,8 @@ $(function () {
             {label: '商品名', name: 'goodsName', index: 'goodsName', width: 120},
             {label: '商品简介', name: 'goodsIntro', index: 'goodsIntro', width: 120},
             {label: '商品图片', name: 'goodsCoverImg', index: 'goodsCoverImg', width: 120, formatter: coverImageFormatter},
-            {label: '商品库存', name: 'stockNum', index: 'stockNum', width: 60},
-            {label: '商品售价', name: 'sellingPrice', index: 'sellingPrice', width: 60},
+            {label: '商品库存', name: 'stockNum', index: 'stockNum',sorttype: "integer", sortable: true, width: 60},
+            {label: '商品售价', name: 'sellingPrice', index: 'sellingPrice',sorttype: "integer", sortable: true, width: 60},
             {
                 label: '上架状态',
                 name: 'goodsSellStatus',
@@ -28,6 +28,9 @@ $(function () {
         autowidth: true,
         multiselect: true,
         pager: "#jqGridPager",
+        loadonce: true, //一次加载全部数据到客户端，由客户端进行排序。
+       //sortname: '排序值',//设置默认的排序列
+        sortorder: 'asc',
         jsonReader: {
             root: "data.list",
             page: "data.currPage",

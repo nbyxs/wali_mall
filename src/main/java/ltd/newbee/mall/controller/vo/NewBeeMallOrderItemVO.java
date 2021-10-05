@@ -17,6 +17,7 @@ public class NewBeeMallOrderItemVO implements Serializable {
 
     private Long goodsId;
 
+    private  Long orderId;
     private Integer goodsCount;
 
     private String goodsName;

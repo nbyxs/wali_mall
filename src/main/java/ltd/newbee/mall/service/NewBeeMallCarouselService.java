@@ -23,7 +23,7 @@ public interface NewBeeMallCarouselService {
      * @return
      */
     PageResult getCarouselPage(PageQueryUtil pageUtil);
-
+    PageResult getCarouselPage(PageQueryUtil pageUtil,int sort);
     String saveCarousel(Carousel carousel);
 
     String updateCarousel(Carousel carousel);

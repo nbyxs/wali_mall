@@ -9,15 +9,12 @@
 package ltd.newbee.mall.common;
 
 /**
- * @author 13
- * @qq交流群 796794009
- * @email 2449207463@qq.com
- * @link https://github.com/newbee-ltd
+
  * @apiNote 常量配置
  */
 public class Constants {
     //public final static String FILE_UPLOAD_DIC = "/opt/image/upload/";//上传文件的默认url前缀，根据部署设置自行修改
-    public final static String FILE_UPLOAD_DIC = "D:\\upload\\";//上传文件的默认url前缀，根据部署设置自行修改
+    public final static String FILE_UPLOAD_DIC = "C:\\upload\\";//上传文件的默认url前缀，根据部署设置自行修改
 
     public final static int INDEX_CAROUSEL_NUMBER = 5;//首页轮播图数量(可根据自身需求修改)
 
@@ -31,7 +28,7 @@ public class Constants {
 
     public final static int SHOPPING_CART_ITEM_TOTAL_NUMBER = 13;//购物车中商品的最大数量(可根据自身需求修改)
 
-    public final static int SHOPPING_CART_ITEM_LIMIT_NUMBER = 5;//购物车中单个商品的最大购买数量(可根据自身需求修改)
+    public final static int SHOPPING_CART_ITEM_LIMIT_NUMBER = 20;//购物车中单个商品的最大购买数量(可根据自身需求修改)
 
     public final static String MALL_VERIFY_CODE_KEY = "mallVerifyCode";//验证码key
 

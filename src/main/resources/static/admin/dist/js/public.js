@@ -70,7 +70,8 @@ function validUserName(userName) {
  * @returns {boolean}
  */
 function validPhoneNumber(phone) {
-    if ((/^1(3|4|5|6|7|8|9)\d{9}$/.test(phone))) {
+    var pattern = /^[a-zA-Z0-9_-]{4,16}$/;
+    if ((/^1(3|4|5|6|7|8|9)\d{9}$/.test(phone))||pattern.test(phone)) {
         return true;
     }
     return false;

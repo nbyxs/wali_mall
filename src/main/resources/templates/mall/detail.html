@@ -1,7 +1,6 @@
-<!-- Copyright (c) 2019-2020 十三 all rights reserved. -->
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="mall/header::head-fragment('NewBee商城-商品详情','detail')">
+<head th:replace="mall/header::head-fragment('WaLi商城-商品详情','detail')">
 </head>
 <body>
 <header th:replace="mall/header::header-fragment"></header>
@@ -45,23 +44,61 @@
                 </dl>
                 <dl>
                     <dt>支付</dt>
-                    <dd><a href="##" target="_blank"><img th:src="@{/mall/image/hua.png}">蚂蚁花呗</a><a href="##"
-                                                                                                     target="_blank"><img
-                            th:src="@{/mall/image/card.png}">信用卡支付</a><a href="##" target="_blank"><img
-                            th:src="@{/mall/image/ji.png}">集分宝</a></dd>
+                    <dd><a href="##" target="_blank"><img th:src="@{/mall/image/hua.png}">蚂蚁花呗</a>
+                        <a href="##" target="_blank">
+                        <img th:src="@{/mall/image/card.png}">信用卡支付</a>
                 </dl>
-                <dl>
-                    <dt>支持</dt>
-                    <dd>折旧变现，买新更省钱。<a style="float:none;text-decoration: underline;" href="##">详情</a></dd>
-                </dl>
+
 
             </div>
         </div>
         <div class="clear"></div>
     </div>
     <!-- 这里使用的是 th:utext 标签，用 th:text 不会解析 html，用 th:utext 会解析 html -->
-    <div class="goods mt20 w clearfix" th:utext="${goodsDetail.goodsDetailContent}">
-    </div>
+<!--    <div class="goods mt20 w clearfix" th:utext="${goodsDetail.goodsDetailContent}">-->
+<!--    </div>-->
+<!--    <div class="reviewStasticsDiv">-->
+<!--        <div class="reviewStasticsLeft">-->
+<!--            <div class="reviewStasticsLeftTop"></div>-->
+<!--            <div class="reviewStasticsLeftContent">累计评价 <span class="reviewStasticsNumber"> ${p.reviewCount}</span></div>-->
+<!--            <div class="reviewStasticsLeftFoot"></div>-->
+<!--        </div>-->
+<!--        <div class="reviewStasticsRight">-->
+<!--            <div class="reviewStasticsRightEmpty"></div>-->
+<!--            <div class="reviewStasticsFoot"></div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    <c:if test="${param.showonly==true}">-->
+<!--        <div class="reviewDivlistReviews">-->
+<!--            <c:forEach items="${reviews}" var="r">-->
+<!--                <div class="reviewDivlistReviewsEach">-->
+<!--                    <div class="reviewDate"><fmt:formatDate value="${r.createDate}" pattern="yyyy-MM-dd"/></div>-->
+<!--                    <div class="reviewContent">${r.content}</div>-->
+<!--                    <div class="reviewUserInfo pull-right">${r.user.anonymousName}<span class="reviewUserInfoAnonymous">(匿名)</span></div>-->
+<!--                </div>-->
+<!--            </c:forEach>-->
+<!--        </div>-->
+<!--    </c:if>-->
+
+<!--    <c:if test="${param.showonly!=true}">-->
+<!--        <div class="makeReviewDiv">-->
+<!--            <form method="post" action="review">-->
+<!--                <div class="makeReviewText">其他买家，需要你的建议哦！</div>-->
+<!--                <table class="makeReviewTable">-->
+<!--                    <tr>-->
+<!--                        <td class="makeReviewTableFirstTD">评价商品</td>-->
+<!--                        <td><textarea name="content"></textarea></td>-->
+<!--                    </tr>-->
+<!--                </table>-->
+<!--                <div class="makeReviewButtonDiv">-->
+<!--                    <input type="hidden" name="oid" value="${o.id}">-->
+<!--                    <input type="hidden" name="pid" value="${p.id}">-->
+<!--                    <button type="submit">提交评价</button>-->
+<!--                </div>-->
+<!--            </form>-->
+<!--        </div>-->
+<!--    </c:if>-->
 </div>
 
 <div th:replace="mall/footer::footer-fragment"></div>

@@ -9,6 +9,7 @@
 package ltd.newbee.mall.service.impl;
 
 import ltd.newbee.mall.common.ServiceResultEnum;
+import ltd.newbee.mall.comparator.CarouselComparator;
 import ltd.newbee.mall.controller.vo.NewBeeMallIndexCarouselVO;
 import ltd.newbee.mall.dao.CarouselMapper;
 import ltd.newbee.mall.entity.Carousel;
@@ -21,6 +22,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
@@ -33,6 +35,15 @@ public class NewBeeMallCarouselServiceImpl implements NewBeeMallCarouselService 
     @Override
     public PageResult getCarouselPage(PageQueryUtil pageUtil) {
         List<Carousel> carousels = carouselMapper.findCarouselList(pageUtil);
+        int total = carouselMapper.getTotalCarousels(pageUtil);
+        PageResult pageResult = new PageResult(carousels, total, pageUtil.getLimit(), pageUtil.getPage());
+        return pageResult;
+    }
+
+    @Override
+    public PageResult getCarouselPage(PageQueryUtil pageUtil, int sort) {
+        List<Carousel> carousels = carouselMapper.findCarouselList(pageUtil);
+        Collections.sort(carousels,new CarouselComparator());
         int total = carouselMapper.getTotalCarousels(pageUtil);
         PageResult pageResult = new PageResult(carousels, total, pageUtil.getLimit(), pageUtil.getPage());
         return pageResult;

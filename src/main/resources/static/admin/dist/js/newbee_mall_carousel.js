@@ -1,3 +1,4 @@
+var  flag=true;
 $(function () {
     $("#jqGrid").jqGrid({
         url: '/admin/carousels/list',
@@ -6,7 +7,7 @@ $(function () {
             {label: 'id', name: 'carouselId', index: 'carouselId', width: 50, key: true, hidden: true},
             {label: '轮播图', name: 'carouselUrl', index: 'carouselUrl', width: 180, formatter: coverImageFormatter},
             {label: '跳转链接', name: 'redirectUrl', index: 'redirectUrl', width: 120},
-            {label: '排序值', name: 'carouselRank', index: 'carouselRank', width: 120},
+            {label: '排序值', name: 'carouselRank', index: 'carouselRank', width: 120,sorttype: "integer", sortable:true},
             {label: '添加时间', name: 'createTime', index: 'createTime', width: 120}
         ],
         height: 560,
@@ -29,7 +30,13 @@ $(function () {
             page: "page",
             rows: "limit",
             order: "order",
+
+
         },
+        loadonce:true, //一次加载全部数据到客户端，由客户端进行排序。
+        sortname: '排序值',//设置默认的排序列
+        sortorder: 'asc',
+
         gridComplete: function () {
             //隐藏grid底部滚动条
             $("#jqGrid").closest(".ui-jqgrid-bdiv").css({"overflow-x": "hidden"});
@@ -76,11 +83,22 @@ function reload() {
         page: page
     }).trigger("reloadGrid");
 }
-
 function carouselAdd() {
     reset();
     $('.modal-title').html('轮播图添加');
     $('#carouselModal').modal('show');
+}
+
+function carouselSort(){
+
+
+    var url = $("#jqGrid").jqGrid('getGridParam', 'url')+'?sort='+flag;
+    $("#jqGrid").jqGrid('setGridParam', {
+       url:url
+    }).trigger("reloadGrid");
+    flag=!flag;
+    var url = $("#jqGrid").jqGrid('getGridParam', 'url');
+    url.remove()
 }
 
 //绑定modal上的保存按钮

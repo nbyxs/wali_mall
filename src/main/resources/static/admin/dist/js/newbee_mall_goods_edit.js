@@ -1,5 +1,4 @@
 var editorD;
-
 $(function () {
 
     //富文本编辑器 用于商品详情编辑
@@ -11,7 +10,7 @@ $(function () {
     editorD.config.uploadImgServer = '/admin/upload/files'
     editorD.config.uploadFileName = 'files'
     //限制图片大小 2M
-    editorD.config.uploadImgMaxSize = 2 * 1024 * 1024
+    editorD.config.uploadImgMaxSize = 5 * 1024 * 1024
     //限制一次最多能传几张图片 一次最多上传 5 个图片
     editorD.config.uploadImgMaxLength = 5
     //隐藏插入网络图片的功能

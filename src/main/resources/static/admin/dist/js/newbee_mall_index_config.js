@@ -8,7 +8,7 @@ $(function () {
             {label: 'id', name: 'configId', index: 'configId', width: 50, key: true, hidden: true},
             {label: '配置项名称', name: 'configName', index: 'configName', width: 180},
             {label: '跳转链接', name: 'redirectUrl', index: 'redirectUrl', width: 120},
-            {label: '排序值', name: 'configRank', index: 'configRank', width: 120},
+            {label: '排序值', name: 'configRank', index: 'configRank',sorttype: "integer", width: 120, sortable: true},
             {label: '商品编号', name: 'goodsId', index: 'goodsId', width: 120},
             {label: '添加时间', name: 'createTime', index: 'createTime', width: 120}
         ],
@@ -33,6 +33,9 @@ $(function () {
             rows: "limit",
             order: "order",
         },
+        loadonce:true, //一次加载全部数据到客户端，由客户端进行排序。
+        sortname: '排序值',//设置默认的排序列
+        sortorder: 'asc',
         gridComplete: function () {
             //隐藏grid底部滚动条
             $("#jqGrid").closest(".ui-jqgrid-bdiv").css({"overflow-x": "hidden"});
