@@ -54,8 +54,11 @@ public class NewBeeMallUserServiceImpl implements NewBeeMallUserService {
 
     @Override
     public String login(String loginName, String passwordMD5, HttpSession httpSession) {
+        System.out.println(loginName+" "+passwordMD5);
         MallUser user = mallUserMapper.selectByLoginNameAndPasswd(loginName, passwordMD5);
-        System.out.println(user.toString());
+
+       System.out.println(user.toString());
+
         if (user != null && httpSession != null) {
             if (user.getLockedFlag() == 1) {
                 return ServiceResultEnum.LOGIN_USER_LOCKED.getResult();
